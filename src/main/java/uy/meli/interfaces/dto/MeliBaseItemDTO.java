@@ -1,34 +1,42 @@
 package uy.meli.interfaces.dto;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class MeliBaseItemDTO {
-	private String itemId;
-	private LocalDateTime stopTime;
-
+public class MeliBaseItemDTO implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
+	
+	private String id;
+	private LocalDateTime stop_time;
+	
 	public MeliBaseItemDTO() {
 		super();
 	}
-
-	public MeliBaseItemDTO(String itemId, LocalDateTime stopTime) {
+	
+	public MeliBaseItemDTO(String id, LocalDateTime stop_time) {
 		super();
-		this.itemId = itemId;
-		this.stopTime = stopTime;
+		this.id = id;
+		this.stop_time = stop_time;
 	}
-
-	public String getItem_id() {
-		return itemId;
+	
+	public String getId() {
+		return id;
 	}
-
-	public void setItem_id(String itemId) {
-		this.itemId = itemId;
+	
+	public void setId(String id) {
+		this.id = id;
 	}
-
-	public LocalDateTime getStopTime() {
-		return stopTime;
+	
+	public LocalDateTime getStop_time() {
+		return stop_time;
 	}
-
-	public void setStopTime(LocalDateTime stopTime) {
-		this.stopTime = stopTime;
+	
+	public void setStop_time(LocalDateTime stop_time) {
+		this.stop_time = stop_time;
 	}
-
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 }

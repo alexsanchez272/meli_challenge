@@ -14,9 +14,10 @@ public class ItemService implements IItemService{
 	
 	@Autowired
 	private IItemCacheDAO itemCacheDAO;
-	
-	public ItemDTO getItemById(String id) {
-		
+
+	@Override
+	public ItemDTO getItemById() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

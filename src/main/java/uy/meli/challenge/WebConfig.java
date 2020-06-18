@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "uy.meli.challenge")
+@ComponentScan(basePackages = "uy.meli")
 public class WebConfig {
 
 }
