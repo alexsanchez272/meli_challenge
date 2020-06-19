@@ -10,9 +10,14 @@ La aplicación debe correr dentro de un contenedor **Docker**.
 La API contiene los siguientes endpoints:
 
 ### Item ###
-- `GET /item/:id:` Recibe un id de item y devuelve el item con ese ID. En caso de no existir, devuelve error.
+- `GET /item/:id`: Recibe un id de item y devuelve el item con ese ID. En caso de no existir, devuelve error.
 ### Métricas ###
-- `GET /health:` Devuelve un Json con métricas de la aplicación agrupada por minuto. La información resultante mostrará el comportamiento de la aplicación solo para los últimos 60.
+- `GET /health`: Devuelve un Json con métricas de la aplicación agrupada por minuto. La información resultante mostrará el comportamiento de la aplicación solo para los últimos 60.
+### Métricas adiciones ###
+**** Spring Boot Actuator ****
+
+- `GET /actuator/health` 
+- `GET /actuator/metrics`
 
 ## Tecnologías ##
 
@@ -20,9 +25,6 @@ La API contiene los siguientes endpoints:
 - PostgresSQL
 - Spring Boot
 - Docker
-
-### Métricas adiciones ###
-- Spring Boot Actuator
 
 ### L2 Cache ###
 - hibernate ehcache: Con el fin de conseguir un incremento de la velocidad de acceso a los objetos.
