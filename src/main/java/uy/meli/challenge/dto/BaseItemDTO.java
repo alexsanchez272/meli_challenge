@@ -7,13 +7,13 @@ public class BaseItemDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private LocalDateTime stop_time;
+	private String stop_time;
 	
 	public BaseItemDTO() {
 		super();
 	}
 	
-	public BaseItemDTO(String id, LocalDateTime stop_time) {
+	public BaseItemDTO(String id, String stop_time) {
 		super();
 		this.id = id;
 		this.stop_time = stop_time;
@@ -27,16 +27,12 @@ public class BaseItemDTO implements Serializable {
 		this.id = id;
 	}
 	
-	public LocalDateTime getStop_time() {
+	public String getStop_time() {
 		return stop_time;
 	}
 	
-	public void setStop_time(LocalDateTime stop_time) {
+	public void setStop_time(String stop_time) {
 		this.stop_time = stop_time;
-	}
-	
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 }

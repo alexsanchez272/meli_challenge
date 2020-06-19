@@ -5,8 +5,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import uy.meli.challenge.dto.BaseItemDTO;
-
 public class ItemDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -14,16 +12,16 @@ public class ItemDTO implements Serializable {
 	private String title;
 	private String category_id;
 	private BigDecimal price;
-	private LocalDateTime start_time;
-	private LocalDateTime stop_time;
+	private String start_time;
+	private String stop_time;
 	private List<BaseItemDTO> childs;
 
 	public ItemDTO() {
 
 	}
 
-	public ItemDTO(String id, String title, String category_id, BigDecimal price, LocalDateTime start_time,
-			LocalDateTime stopTime, List<BaseItemDTO> childs) {
+	public ItemDTO(String id, String title, String category_id, BigDecimal price, String start_time,
+			String stopTime, List<BaseItemDTO> childs) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -41,15 +39,7 @@ public class ItemDTO implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public LocalDateTime getStopTime() {
-		return stop_time;
-	}
-
-	public void setStopTime(LocalDateTime stopTime) {
-		this.stop_time = stopTime;
-	}
-
+	
 	public String getTitle() {
 		return title;
 	}
@@ -74,19 +64,19 @@ public class ItemDTO implements Serializable {
 		this.price = price;
 	}
 
-	public LocalDateTime getStart_time() {
+	public String getStart_time() {
 		return start_time;
 	}
 
-	public void setStart_time(LocalDateTime start_time) {
+	public void setStart_time(String start_time) {
 		this.start_time = start_time;
 	}
 	
-	public LocalDateTime getStop_time() {
+	public String getStop_time() {
 		return stop_time;
 	}
 
-	public void setStop_time(LocalDateTime stop_time) {
+	public void setStop_time(String stop_time) {
 		this.stop_time = stop_time;
 	}
 
@@ -97,10 +87,5 @@ public class ItemDTO implements Serializable {
 	public void setChilds(List<BaseItemDTO> childs) {
 		this.childs = childs;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 
 }

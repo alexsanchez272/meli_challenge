@@ -4,6 +4,6 @@ import uy.meli.challenge.dto.ItemDTO;
 
 public interface IItemService {
 	
-	public ItemDTO getItemById();
+	public ItemDTO getItemById(String id);
 
 }

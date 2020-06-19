@@ -3,9 +3,6 @@ package uy.meli.interfaces.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
-
-import uy.meli.challenge.dto.BaseItemDTO;
 
 public class MeliItemDTO implements Serializable {
 
@@ -14,15 +11,15 @@ public class MeliItemDTO implements Serializable {
 	private String title;
 	private String category_id;
 	private BigDecimal price;
-	private LocalDateTime start_time;
-	private LocalDateTime stop_time;	
+	private String start_time;
+	private String stop_time;	
 
 	public MeliItemDTO() {
 
 	}
 
-	public MeliItemDTO(String id, String title, String category_id, BigDecimal price, LocalDateTime start_time,
-			LocalDateTime stopTime) {
+	public MeliItemDTO(String id, String title, String category_id, BigDecimal price, String start_time,
+			String stopTime) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -40,14 +37,6 @@ public class MeliItemDTO implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public LocalDateTime getStopTime() {
-		return stop_time;
-	}
-
-	public void setStopTime(LocalDateTime stopTime) {
-		this.stop_time = stopTime;
 	}
 
 	public String getTitle() {
@@ -74,16 +63,20 @@ public class MeliItemDTO implements Serializable {
 		this.price = price;
 	}
 
-	public LocalDateTime getStart_time() {
+	public String getStart_time() {
 		return start_time;
 	}
 
-	public void setStart_time(LocalDateTime start_time) {
+	public void setStart_time(String start_time) {
 		this.start_time = start_time;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getStop_time() {
+		return stop_time;
+	}
+
+	public void setStop_time(String stop_time) {
+		this.stop_time = stop_time;
 	}
 
 

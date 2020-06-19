@@ -13,24 +13,12 @@ import uy.meli.interfaces.dto.MeliBaseItemDTO;
 import uy.meli.interfaces.dto.MeliItemDTO;
 
 @SpringBootApplication
-public class MeliChallengeApplication implements CommandLineRunner{
+public class MeliChallengeApplication{
 
 	private static final Logger log = LoggerFactory.getLogger(MeliChallengeApplication.class);
-
-	
-	@Autowired
-	private IItemExternal meliClient;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(MeliChallengeApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		MeliItemDTO item = meliClient.getItem("MLU460998489");
-		MeliBaseItemDTO[] childrens = meliClient.getItemChilds("MLU460998489");
-		log.info("Response: " + item);
-		
 	}
 
 }
