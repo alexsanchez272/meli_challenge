@@ -10,9 +10,14 @@ La aplicación debe correr dentro de un contenedor **Docker**.
 La API contiene los siguientes endpoints:
 
 ### Item ###
-- `GET /item/:id:` Recibe un id de item y devuelve el item con ese ID. En caso de no existir, devuelve error.
+- `GET /item/:id`: Recibe un id de item y devuelve el item con ese ID. En caso de no existir, devuelve error.
 ### Métricas ###
-- `GET /health:` Devuelve un Json con métricas de la aplicación agrupada por minuto. La información resultante mostrará el comportamiento de la aplicación solo para los últimos 60.
+- `GET /health`: Devuelve un Json con métricas de la aplicación agrupada por minuto. La información resultante mostrará el comportamiento de la aplicación solo para los últimos 60.
+### Métricas adiciones ###
+***Spring Boot Actuator***
+
+- `GET /actuator/health` 
+- `GET /actuator/metrics`
 
 ## Tecnologías ##
 
@@ -21,10 +26,13 @@ La API contiene los siguientes endpoints:
 - Spring Boot
 - Docker
 
-### Métricas adiciones ###
-- Spring Boot Actuator
+### L2 Cache ###
+- hibernate ehcache: Con el fin de conseguir un incremento de la velocidad de acceso a los objetos.
 
 ## Assumptions ##
 - Se asume que la información almacenada en caché tiene un periodo de expiración de una semana, con el objetivo de no perder nuevas republicaciones que podría tener Item. Para tener un mejor control sobre el crecimiento de la tabla, asumiendo que podría tratarse de un sistema con alta concurrencia todos los Items almacendados en la cache con fecha de creación mayor a 7 días, serán eliminados por medio de un proceso desatendido desde la BD que se ejecutará cada día a una hora determinada.
 
 - Se asume que la información mostrada por el servicio ***health*** será correspondiente solamente a los 60 minutos anteriores a la consulta del servicio. Estas métricas seran recolectadas y almacenadas en la tabla ***metrica*** en formato json a través de un proceso desatendido que correrá en la BD cada 1 minuto y analisará la información de los request del minuto anterior existentes en las tablas ***item_cache*** y ***ml_api_data***, evitando que se tenga que analizar todos los registros de estas tablas correspondientes a los últimos 60 minutos cada vez que se consulte el servicio ***health*** en busca de mejor performance, asumiendo que la cantidad de registros creados por minuto podrían ser considerable.
+
+## Mejoras recomendadas ##
+- Una mejora a realizar es la obtención de los tiempos de ejecución de los métodos haciendo uso de Spring AOP, considero sería una solución más elegante que con más tiempo se podría realizar. 
