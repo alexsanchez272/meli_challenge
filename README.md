@@ -14,7 +14,7 @@ La API contiene los siguientes endpoints:
 ### Métricas ###
 - `GET /health`: Devuelve un Json con métricas de la aplicación agrupada por minuto. La información resultante mostrará el comportamiento de la aplicación solo para los últimos 60.
 ### Métricas adiciones ###
-**** Spring Boot Actuator ****
+***Spring Boot Actuator***
 
 - `GET /actuator/health` 
 - `GET /actuator/metrics`
