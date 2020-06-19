@@ -24,6 +24,9 @@ La API contiene los siguientes endpoints:
 ### Métricas adiciones ###
 - Spring Boot Actuator
 
+### L2 Cache ###
+- hibernate ehcache: Con el fin de conseguir un incremento de la velocidad de acceso a los objetos.
+
 ## Assumptions ##
 - Se asume que la información almacenada en caché tiene un periodo de expiración de una semana, con el objetivo de no perder nuevas republicaciones que podría tener Item. Para tener un mejor control sobre el crecimiento de la tabla, asumiendo que podría tratarse de un sistema con alta concurrencia todos los Items almacendados en la cache con fecha de creación mayor a 7 días, serán eliminados por medio de un proceso desatendido desde la BD que se ejecutará cada día a una hora determinada.
 
