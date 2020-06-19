@@ -42,3 +42,5 @@ La API contiene los siguientes endpoints:
 - Prevenir una posible situación donde de forma concurrente se solicite el mismo ITEM por primera vez, para evitar que se creen varias instancias del mismo en la BD.
 
 - Crear test unitarios.
+
+- Agregar documentación con swagger.
