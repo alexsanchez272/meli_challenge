@@ -34,5 +34,5 @@ La API contiene los siguientes endpoints:
 
 - Se asume que la información mostrada por el servicio ***health*** será correspondiente solamente a los 60 minutos anteriores a la consulta del servicio. Estas métricas seran recolectadas y almacenadas en la tabla ***metrica*** en formato json a través de un proceso desatendido que correrá en la BD cada 1 minuto y analisará la información de los request del minuto anterior existentes en las tablas ***item_cache*** y ***ml_api_data***, evitando que se tenga que analizar todos los registros de estas tablas correspondientes a los últimos 60 minutos cada vez que se consulte el servicio ***health*** en busca de mejor performance, asumiendo que la cantidad de registros creados por minuto podrían ser considerable.
 
-## Mejoras recomendada ##
+## Mejoras recomendadas ##
 - Una mejora a realizar es la obtención de los tiempos de ejecución de los métodos haciendo uso de Spring AOP, considero sería una solución más elegante que con más tiempo se podría realizar. 
