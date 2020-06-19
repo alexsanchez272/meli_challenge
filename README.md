@@ -38,3 +38,5 @@ La API contiene los siguientes endpoints:
 
 ## Mejoras recomendadas ##
 - Una mejora a realizar es la obtención de los tiempos de ejecución de los métodos haciendo uso de Spring AOP, considero sería una solución más elegante que con más tiempo se podría realizar. 
+
+- Prevenir una posible situación donde de forma concurrente se solicite el mismo ITEM por primera vez, para evitar que se creen varias instancias del mismo en la BD.
