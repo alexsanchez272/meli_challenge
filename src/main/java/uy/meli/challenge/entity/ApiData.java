@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -23,10 +25,10 @@ import com.sun.istack.NotNull;
 import uy.meli.challenge.dto.ItemDTO;
 
 @Entity
-@Table(name = "item_cache")
+@Table(name = "api_data")
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class ItemCache implements Serializable {
+public class ApiData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -34,22 +36,28 @@ public class ItemCache implements Serializable {
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
-	@Column(name = "item_info")
-	@NotNull
-	@Type(type = "ItemJsonType")
-	private ItemDTO itemInfo;
+	@Column(name = "creation_date")
+	private Date creationDate;
+
+	@Column(name = "response_time")
+	private Long responseTime;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "itemCacheId")
-    private Collection<ApiData> apiDataCollection;
+	@JoinColumn(name = "item_cache_id", referencedColumnName = "id")
+	@ManyToOne
+	private ItemCache itemCacheId;
 	
-	public ItemCache() {
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "apiDataId")
+    private Collection<MlApiData> mlApiDataCollection;
+	
+	public ApiData() {
 		super();
 	}
 	
-	public ItemCache(Integer id, ItemDTO itemInfo) {
+	public ApiData(Integer id, Date creationDate, Long responseTime) {
 		super();
 		this.id = id;
-		this.itemInfo = itemInfo;
+		this.creationDate = creationDate;
+		this.responseTime = responseTime;
 	}
 
 	public long getId() {
@@ -60,20 +68,36 @@ public class ItemCache implements Serializable {
 		this.id = id;
 	}
 
-	public ItemDTO getItemInfo() {
-		return itemInfo;
+	public Date getCreationDate() {
+		return creationDate;
 	}
 
-	public void setItemInfo(ItemDTO itemInfo) {
-		this.itemInfo = itemInfo;
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Long getResponseTime() {
+		return responseTime;
+	}
+
+	public void setResponseTime(Long responseTime) {
+		this.responseTime = responseTime;
+	}
+
+	public Collection<MlApiData> getMlApiDataCollection() {
+		return mlApiDataCollection;
+	}
+
+	public void setMlApiDataCollection(Collection<MlApiData> mlApiDataCollection) {
+		this.mlApiDataCollection = mlApiDataCollection;
 	}
 	
-	public Collection<ApiData> getMlApiDataCollection() {
-		return apiDataCollection;
+	public ItemCache getItemCacheId() {
+		return itemCacheId;
 	}
 
-	public void setMlApiDataCollection(Collection<ApiData> mlApiDataCollection) {
-		this.apiDataCollection = mlApiDataCollection;
+	public void setItemCacheId(ItemCache itemCacheId) {
+		this.itemCacheId = itemCacheId;
 	}
 	
 	@Override
@@ -85,10 +109,10 @@ public class ItemCache implements Serializable {
 	
     @Override
     public boolean equals(Object object) {
-        if (!(object instanceof ItemCache)) {
+        if (!(object instanceof ApiData)) {
             return false;
         }
-        ItemCache other = (ItemCache) object;
+        ApiData other = (ApiData) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

@@ -1,26 +1,25 @@
 package uy.meli.challenge.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.List;
 
-public class MetricDTO implements Serializable{
+public class MetricDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	private LocalDateTime date;
+
+	private String date;
 	private Long avg_response_time;
 	private Integer total_requests;
 	private Long avg_response_time_api_calls;
 	private Integer total_count_api_calls;
 	private List<InfoRequestDTO> info_requests;
-	
+
 	public MetricDTO() {
 		super();
 	}
 
-	public MetricDTO(LocalDateTime date, Long avg_response_time, Integer total_requests,
-			Long avg_response_time_api_calls, Integer total_count_api_calls, List<InfoRequestDTO> info_requests) {
+	public MetricDTO(String date, Long avg_response_time, Integer total_requests, Long avg_response_time_api_calls,
+			Integer total_count_api_calls, List<InfoRequestDTO> info_requests) {
 		super();
 		this.date = date;
 		this.avg_response_time = avg_response_time;
@@ -30,11 +29,11 @@ public class MetricDTO implements Serializable{
 		this.info_requests = info_requests;
 	}
 
-	public LocalDateTime getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(LocalDateTime date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

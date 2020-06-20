@@ -1,16 +1,17 @@
 package uy.meli.challenge.utils;
 
-import uy.meli.challenge.dto.ItemCacheDTO;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Globals {
 
-	public static ThreadLocal<ItemCacheDTO> GLOBAL_CACHE;
+	public static ThreadLocal<Map<String, Object>> GLOBAL_CACHE;
 
 	static {
-		GLOBAL_CACHE = new ThreadLocal<ItemCacheDTO>() {
+		GLOBAL_CACHE = new ThreadLocal<Map<String, Object>>() {
 			@Override
-			public ItemCacheDTO initialValue() {
-				return new ItemCacheDTO();
+			public Map<String, Object> initialValue() {
+				return new HashMap<>();
 			}
 		};
 	}

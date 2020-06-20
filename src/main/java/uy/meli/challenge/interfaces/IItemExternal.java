@@ -1,12 +1,14 @@
 package uy.meli.challenge.interfaces;
 
+import java.util.Optional;
+
 import uy.meli.interfaces.dto.MeliBaseItemDTO;
 import uy.meli.interfaces.dto.MeliItemDTO;
 
 public interface IItemExternal {
 	
-	public MeliItemDTO getItem(String id);
+	public Optional<MeliItemDTO> getItem(String id);
 	
-	public MeliBaseItemDTO[] getItemChilds(String id);
+	public Optional<MeliBaseItemDTO[]> getItemChilds(String id);
 
 }

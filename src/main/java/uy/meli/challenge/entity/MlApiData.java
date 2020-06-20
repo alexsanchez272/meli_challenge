@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 /**
  * 
  * @author ale
@@ -23,30 +25,38 @@ public class MlApiData implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", updatable = false, nullable = false)
 	private Integer id;
 
 	@Column(name = "meli_api_response_time")
-	private BigInteger meliApiResponseTime;
+	private Long meliApiResponseTime;
 
 	@Column(name = "meli_api_status_code")
 	private Integer meliApiStatusCode;
 
-	@JoinColumn(name = "item_cache_id", referencedColumnName = "id")
+	@JoinColumn(name = "api_data_id", referencedColumnName = "id")
+	@NotNull
 	@ManyToOne(optional = false)
-	private ItemCache itemCacheId;
+	private ApiData apiDataId;
 
 	public MlApiData() {
 		super();
 	}
 
-	public MlApiData(Integer id, BigInteger meliApiResponseTime, Integer meliApiStatusCode, ItemCache itemCacheId) {
+	public MlApiData(Integer id, Long meliApiResponseTime, Integer meliApiStatusCode, ApiData apiData) {
 		super();
 		this.id = id;
 		this.meliApiResponseTime = meliApiResponseTime;
 		this.meliApiStatusCode = meliApiStatusCode;
-		this.itemCacheId = itemCacheId;
+		this.apiDataId = apiData;
+	}
+
+	public MlApiData(Long meliApiResponseTime, Integer meliApiStatusCode, ApiData apiData) {
+		super();
+		this.meliApiResponseTime = meliApiResponseTime;
+		this.meliApiStatusCode = meliApiStatusCode;
+		this.apiDataId = apiData;
 	}
 
 	public MlApiData(Integer id) {
@@ -61,11 +71,11 @@ public class MlApiData implements Serializable {
 		this.id = id;
 	}
 
-	public BigInteger getMeliApiResponseTime() {
+	public Long getMeliApiResponseTime() {
 		return meliApiResponseTime;
 	}
 
-	public void setMeliApiResponseTime(BigInteger meliApiResponseTime) {
+	public void setMeliApiResponseTime(Long meliApiResponseTime) {
 		this.meliApiResponseTime = meliApiResponseTime;
 	}
 
@@ -77,12 +87,12 @@ public class MlApiData implements Serializable {
 		this.meliApiStatusCode = meliApiStatusCode;
 	}
 
-	public ItemCache getItemCacheId() {
-		return itemCacheId;
+	public ApiData getItemCacheId() {
+		return apiDataId;
 	}
 
-	public void setItemCacheId(ItemCache itemCacheId) {
-		this.itemCacheId = itemCacheId;
+	public void setItemCacheId(ApiData itemCacheId) {
+		this.apiDataId = itemCacheId;
 	}
 
 	@Override
